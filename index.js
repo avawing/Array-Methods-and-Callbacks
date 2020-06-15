@@ -77,11 +77,11 @@ Parameters:
  */
 
 function getWinnersByYear(callback1, callback2) {
-    let winners = callback1();
-    let years = callback2();
+    let winners = callback1(getFinals);
+    let years = callback2(getFinals);
 
-    for(let i = 0; i < winners; i++){
-        console.log `In ${years[i]}, ${winners[i]} won the world cup!`
+    for(let i = 0; i < winners.length; i++){
+        console.log (`In ${years[i]}, ${winners[i]} won the world cup!`)
     }
 
 };
@@ -108,13 +108,13 @@ and returns the number of world cup wins that country has had.
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+function getCountryWins(data, initials) {
 
     /* code here */
-
-};
-
-getCountryWins();
+let info = data.filter((game)=>{return game['Home Team Initals'] === initials || game['Away Team Initals' === initials]});
+console.log(info)
+}
+getCountryWins(fifaData, 'GER');
 
 
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` 
