@@ -9,11 +9,6 @@ console.log('its working');
 (a) Home Team name for 2014 world cup final*/
 console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Home Team Name']) );
 
-
-
-
-
- 
  //(b) Away Team name for 2014 world cup final
  console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Away Team Name']) );
  //(c) Home Team goals for 2014 world cup final
