@@ -100,18 +100,14 @@ and returns the the average number of home team goals and away team goals scored
 function getAverageGoals(data){
 
 
-    const homeTeamGoals = data.map(game=> game['Home Team Goals']).reduce((accumulator, currentValue) => 
-        accumulator + currentValue / data.length)
+    const homeTeamGoals = Math.round(data.reduce((total, num) => num['Home Team Goals'] + total, 0 )/ data.length);
 
-    const awayTeamGoals = data.map(game=> game['Away Team Goals']).reduce((accumulator, currentValue) => 
-    accumulator + currentValue / data.length)
+    const awayTeamGoals = Math.round(data.reduce((total, num) => num['Away Team Goals'] + total, 0 )/ data.length);
 
     return {'Away Goals': awayTeamGoals,'Home Goals': homeTeamGoals};
     }
 
     /* code here */
-
-
 
 getAverageGoals(fifaData);
 
@@ -138,27 +134,27 @@ getCountryWins(fifaData, 'GER');
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` 
 and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
-// function getGoals(data) {
+function getGoals(data) {
     
-// let countries = data.map(item => item['Home Team Initials']).filter((item, index) => data.map(item => item['Home Team Initials']).indexOf(item)=== index);
-// let bestGoals = 0;
-// let result = 0;
-// let bestCountry = '';
+let countries = data.map(item => item['Home Team Initials']).filter((item, index) => data.map(item => item['Home Team Initials']).indexOf(item)=== index);
+let bestGoals = 0;
+let result = 0;
+let bestCountry = '';
 
-// let Home = countries.forEach(country => data.reduce(game=>{
-//      if(country === game['Home Team Initials'] || country === game['Away Team Initials'])
-//      {
+let Home = countries.forEach(country => data.map(game=>{
+     if(country === game['Home Team Initials'] || country === game['Away Team Initials'])
+     {
 
-//      }
-//     }))
-// //unfinished. Meh
-//     console.log(newMap)
+     }
+    }))
+//unfinished. Meh
+    console.log(newMap)
 
-// };
+};
     
-//     /* code here */
+    /* code here */
 
-//getGoals(fifaData);
+getGoals(fifaData);
 
 
 
