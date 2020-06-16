@@ -126,8 +126,13 @@ Hint: use `.reduce` */
 function getCountryWins(data, initials) {
 
     /* code here */
+    const homeTeam = data.filter(game=> game['Home Team Initials']=== initials && (game['Home Team Goals'] > game['Away Team Goals']))
 
+
+console.log(homeTeam)
+    const awayTeam = data.filter(game=> game['Away Team Initials'] === initials)
 }
+
 getCountryWins(fifaData, 'GER');
 
 
