@@ -7,26 +7,29 @@ console.log('its working');
 /* Task 1: Investigate the data above. Practice accessing data by console.log-ing the following pieces of data 
 
 (a) Home Team name for 2014 world cup final*/
-let Team2014 = fifaData.filter((game)=>{
-     return game['Year'] === 2014 && game['Stage'] === 'Final'
- }
- ); 
+console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Home Team Name']) );
 
 
- console.log(Team2014[0]['Home Team Name']);
+
 
 
  
  //(b) Away Team name for 2014 world cup final
- console.log(Team2014[0]['Away Team Name']);
+ console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Away Team Name']) );
  //(c) Home Team goals for 2014 world cup final
- console.log(Team2014[0]['Home Team Goals']);
+ console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Home Team Goals']) );
  //(d) Away Team goals for 2014 world cup final
- console.log(Team2014[0]['Away Team Goals']);
+ console.log(fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => game['Away Team Goals']) );
  //(e) Winner of 2014 world cup final */
- if(Team2014[0]['Home Team Goals'] > Team2014[0]['Away Team Goals']){
-     console.log(Team2014[0]['Home Team Name'])
- } else (console.log(Team2014[0]['Away Team Name']));
+
+ fifaData.filter((game)=>game['Year'] === 2014 && game['Stage'] === 'Final').map(game => { 
+    if(game['Home Team Goals'] > game['Away Team Goals'])
+    {
+    console.log(game['Home Team Name'])
+} else {console.log(game['Away Team Name'])}
+
+ });
+
 
 
 /* Task 2: Create a function called  getFinals that takes `data` as an argument and returns an array of 
@@ -106,7 +109,7 @@ function getAverageGoals(data){
     const awayTeamGoals = data.map(game=> game['Away Team Goals']).reduce((accumulator, currentValue) => 
     accumulator + currentValue / data.length)
 
-    return awayTeamGoals
+    return awayTeamGoals, homeTeamGoals;
     }
 
     /* code here */
@@ -138,13 +141,15 @@ getCountryWins(fifaData, 'GER');
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` 
 and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
-function getGoals(/* code here */) {
+function getGoals(data) {
 
+
+    
     /* code here */
 
 };
 
-getGoals();
+getGoals(fifaData);
 
 
 /* Stretch 4: Write a function called badDefense() that accepts a parameter 
