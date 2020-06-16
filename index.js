@@ -113,7 +113,7 @@ function getAverageGoals(data){
 
 
 
-console.log(getAverageGoals(fifaData));
+getAverageGoals(fifaData);
 
 /// STRETCH 🥅 //
 
@@ -127,10 +127,9 @@ function getCountryWins(data, initials) {
 
     /* code here */
     const homeTeam = data.filter(game=> game['Home Team Initials']=== initials && (game['Home Team Goals'] > game['Away Team Goals']))
+    const awayTeam = data.filter(game=> game['Away Team Initials'] === initials && (game['Away Team Goals'] > game['Home Team Goals']))
 
-
-console.log(homeTeam)
-    const awayTeam = data.filter(game=> game['Away Team Initials'] === initials)
+    return homeTeam.length + awayTeam.length;
 }
 
 getCountryWins(fifaData, 'GER');
