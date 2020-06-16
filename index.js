@@ -137,14 +137,31 @@ getCountryWins(fifaData, 'GER');
 and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
 
 function getGoals(data) {
+    
+let countries = data.map(item => item['Home Team Initials']).filter((item, index) => data.map(item => item['Home Team Initials']).indexOf(item)=== index);
+let bestGoals = 0;
+let result = 0;
+let bestCountry = '';
+
+let newMap = countries.forEach(country => data.map(game=>{
+     if(country === game['Home Team Initials'] || country === game['Away Team Initials'])
+     {
+        console.log( game['Home Team Goals'])
+     }
 
 
+    }))
+
+    console.log(newMap)
+
+};
     
     /* code here */
 
-};
-
 getGoals(fifaData);
+
+
+
 
 
 /* Stretch 4: Write a function called badDefense() that accepts a parameter 
