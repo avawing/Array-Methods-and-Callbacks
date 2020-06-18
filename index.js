@@ -137,18 +137,26 @@ and returns the team with the most goals score per appearance (average goals for
 function getGoals(data) {
     
 let countries = data.map(item => item['Home Team Initials']).filter((item, index) => data.map(item => item['Home Team Initials']).indexOf(item)=== index);
-let bestGoals = 0;
+
 let result = 0;
 let bestCountry = '';
 
-let Home = countries.forEach(country => data.map(game=>{
-     if(country === game['Home Team Initials'] || country === game['Away Team Initials'])
+let home = countries.forEach(country => data.map(game=>{
+     if(country === game['Home Team Initials'] && game['Stage'] === 'Final' && game['Home Team Goals'] > result)
      {
+         result = game['Home Team Goals']
+         bestCountry = game['Home Team Initials']
+
+     } else if(country === game['Away Team Initials'] && game['Stage']=== 'Final' && game['Away Team Goals'] > result){
+        result =game['Away Team Goals']
+        bestCountry = game['Away Team Initials']
 
      }
+
     }))
+    console.log(`${bestCountry} scored ${result}`)
+    
 //unfinished. Meh
-    console.log(newMap)
 
 };
     
