@@ -138,28 +138,35 @@ function getGoals(data) {
     
 let countries = data.map(item => item['Home Team Initials']).filter((item, index) => data.map(item => item['Home Team Initials']).indexOf(item)=== index);
 
+
 let result = 0;
 let bestCountry = '';
+let array = [];
+
 
 let home = countries.forEach(country => data.map(game=>{
-     if(country === game['Home Team Initials'] && game['Stage'] === 'Final' && game['Home Team Goals'] > result)
+    let add = 0;
+    let counter = 0;
+
+     if(country === game['Home Team Initials'] && game['Stage'] === 'Final')
      {
-         result = game['Home Team Goals']
-         bestCountry = game['Home Team Initials']
-
-     } else if(country === game['Away Team Initials'] && game['Stage']=== 'Final' && game['Away Team Goals'] > result){
-        result =game['Away Team Goals']
-        bestCountry = game['Away Team Initials']
-
-     }
-
-    }))
-    console.log(`${bestCountry} scored ${result}`)
+         add += game['Home Team Goals']
+         counter += 1;
+         console.log(game['Home Team Initials'], add, counter)
+     }if(country === game['Away Team Initials'] && game['Stage']=== 'Final'){
+        add += game['Away Team Goals'];
+        counter += 1;
+        console.log(game['Away Team Initials'], add, counter)
+    }   
     
-//unfinished. Meh
+}
 
+))
+array.push(game['Home Team Name'], add, counter)
+console.log(array)
 };
-    
+
+
     /* code here */
 
 getGoals(fifaData);
